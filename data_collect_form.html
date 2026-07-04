@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Retail Data Entry System</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <div class="container">
+    <div class="card login-card" id="loginBox">
+      <h2>Manager Login</h2>
+      <p>Login to enter daily shop data</p>
+
+      <input type="text" id="username" placeholder="Username" />
+      <input type="password" id="password" placeholder="Password" />
+
+      <button onclick="login()">Login</button>
+      <p class="error" id="loginError"></p>
+    </div>
+
+    <div class="card form-card hidden" id="formBox">
+      <h2>Retail Entry Form</h2>
+      <p>Submit customer and purchase information</p>
+
+      <form id="entryForm">
+        <label>Shop Name</label>
+        <input type="text" id="shopName" placeholder="Example: Mirpur Branch" required />
+
+        <label>Purchase</label>
+        <select id="purchase" required>
+          <option value="">Select</option>
+          <option>Yes</option>
+          <option>No</option>
+        </select>
+
+        <label>Timestamp</label>
+        <input type="datetime-local" id="timestamp" required />
+
+        <label>Weather Condition</label>
+        <select id="weather" required>
+          <option value="">Select Weather</option>
+          <option>Hot</option>
+          <option>Rainy</option>
+          <option>Cloudy</option>
+          <option>Cold</option>
+          <option>Normal</option>
+        </select>
+
+        <label>Customer Log</label>
+        <select id="customerLog" required>
+          <option value="">Select Reason</option>
+          <option>Size Not Available</option>
+          <option>Price High</option>
+          <option>Not Choice</option>
+          <option>Just Visited</option>
+          <option>Purchased Successfully</option>
+        </select>
+
+        <label>Customer Count</label>
+        <input type="number" id="customerCount" placeholder="Enter number of customers" required />
+
+        <button type="submit">Submit Data</button>
+      </form>
+<div id="output" class="output-box">
+    
+</div>
+      <button class="logout" onclick="logout()">Logout</button>
+
+      <div class="success hidden" id="successMsg">
+        Data submitted successfully!
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
