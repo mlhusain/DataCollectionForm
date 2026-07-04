@@ -8,68 +8,117 @@
 </head>
 <body>
 
-  <div class="container">
-    <div class="card login-card" id="loginBox">
-      <h2>Manager Login</h2>
-      <p>Login to enter daily shop data</p>
+  <section class="login-page" id="loginPage">
+    <div class="login-card">
+      <h1>Retail Manager Login</h1>
+      <p>Enter your demo credentials to continue</p>
 
       <input type="text" id="username" placeholder="Username" />
       <input type="password" id="password" placeholder="Password" />
 
       <button onclick="login()">Login</button>
       <p class="error" id="loginError"></p>
+
+      <small>Demo: admin / 12345</small>
+    </div>
+  </section>
+
+  <section class="dashboard hidden" id="dashboardPage">
+    <div class="top-bar">
+      <div>
+        <h2>Retail Data Entry</h2>
+        <p>Daily customer movement and purchase tracking</p>
+      </div>
+
+      <div class="clock-box">
+        <span>Live Time</span>
+        <strong id="liveClock">00:00:00</strong>
+      </div>
     </div>
 
-    <div class="card form-card hidden" id="formBox">
-      <h2>Retail Entry Form</h2>
-      <p>Submit customer and purchase information</p>
-
+    <div class="form-card">
       <form id="entryForm">
-        <label>Shop Name</label>
-        <input type="text" id="shopName" placeholder="Example: Mirpur Branch" required />
 
-        <label>Purchase</label>
-        <select id="purchase" required>
-          <option value="">Select</option>
-          <option>Yes</option>
-          <option>No</option>
-        </select>
+        <div class="form-grid">
+          <div class="input-group">
+            <label>Branch / Outlet Name</label>
+            <input type="text" id="shopName" placeholder="Example: Mirpur Branch" required />
+          </div>
 
-        <label>Timestamp</label>
-        <input type="datetime-local" id="timestamp" required />
+          <div class="input-group">
+            <label>Purchase Status</label>
+            <select id="purchase" required>
+              <option value="">Select purchase status</option>
+              <option>Purchased</option>
+              <option>Not Purchased</option>
+            </select>
+          </div>
 
-        <label>Weather Condition</label>
-        <select id="weather" required>
-          <option value="">Select Weather</option>
-          <option>Hot</option>
-          <option>Rainy</option>
-          <option>Cloudy</option>
-          <option>Cold</option>
-          <option>Normal</option>
-        </select>
+          <div class="input-group">
+            <label>Data Entry Date & Time</label>
+            <input type="datetime-local" id="timestamp" required />
+          </div>
 
-        <label>Customer Log</label>
-        <select id="customerLog" required>
-          <option value="">Select Reason</option>
-          <option>Size Not Available</option>
-          <option>Price High</option>
-          <option>Not Choice</option>
-          <option>Just Visited</option>
-          <option>Purchased Successfully</option>
-        </select>
+          <div class="input-group">
+            <label>Current Weather Condition</label>
+            <select id="weather" required>
+              <option value="">Select weather condition</option>
+              <option>Hot</option>
+              <option>Rainy</option>
+              <option>Cloudy</option>
+              <option>Cold</option>
+              <option>Normal</option>
+            </select>
 
-        <label>Customer Count</label>
-        <input type="number" id="customerCount" placeholder="Enter number of customers" required />
+            <button type="button" class="add-weather-btn" onclick="openModal()">
+              + Add Weather Condition
+            </button>
+          </div>
 
-        <button type="submit">Submit Data</button>
+          <div class="input-group">
+            <label>Customer Feedback / Visit Reason</label>
+            <select id="customerLog" required>
+              <option value="">Select customer log</option>
+              <option>Size Not Available</option>
+              <option>Price Too High</option>
+              <option>Product Not Preferred</option>
+              <option>Just Visiting</option>
+              <option>Purchased Successfully</option>
+            </select>
+          </div>
+
+          <div class="input-group">
+            <label>Total Footfall</label>
+            <input type="number" id="totalFootfall" placeholder="Total visitors entered shop" required />
+          </div>
+
+          <div class="input-group">
+            <label>Total Customers Served</label>
+            <input type="number" id="customerCount" placeholder="Number of customers served" required />
+          </div>
+        </div>
+
+        <button type="submit" class="submit-btn">Submit Retail Data</button>
       </form>
-<div id="output" class="output-box">
-    
-</div>
-      <button class="logout" onclick="logout()">Logout</button>
 
       <div class="success hidden" id="successMsg">
         Data submitted successfully!
+      </div>
+
+      <div id="output" class="output-box hidden"></div>
+
+      <button class="logout-btn" onclick="logout()">Logout</button>
+    </div>
+  </section>
+
+  <div class="modal hidden" id="weatherModal">
+    <div class="modal-content">
+      <h3>Add New Weather Condition</h3>
+      <input type="text" id="newWeather" placeholder="Example: Humid" />
+
+      <div class="modal-actions">
+        <button onclick="addWeather()">Add</button>
+        <button class="cancel" onclick="closeModal()">Cancel</button>
       </div>
     </div>
   </div>
